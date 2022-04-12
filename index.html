@@ -730,13 +730,13 @@ butuhkan di bidang administrasi perkantoran.
         </div>
       </div>
 
-      <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+      <form name='syahrul-contac-from' action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
         <div class="row">
           <div class="col-md-6 form-group">
-            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required name="your name" >
           </div>
           <div class="col-md-6 form-group mt-3 mt-md-0">
-            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+            <input type="email" class="form-control" name="your email" id="email" placeholder="Your Email" required >
           </div>
         </div>
         <div class="form-group mt-3">
@@ -761,7 +761,7 @@ butuhkan di bidang administrasi perkantoran.
     <!-- You can delete the links only if you purchased the pro version. -->
     <!-- Licensing information: https://bootstrapmade.com/license/ -->
     <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/personal-free-resume-bootstrap-template/ -->
-    Designed by <a href="https://bootstrapmade.com/">syahrul ramdani</a>
+    Designed by <a href="#">syahrul ramdani</a>
   </div>
 
   <!-- Vendor JS Files -->
@@ -775,6 +775,22 @@ butuhkan di bidang administrasi perkantoran.
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwh050Z7YcSVMmNqRJPZpaf7XLKyoKUCik4fFdl1cz4VFkCiGtJZBTBrtLcHGTRBllyHA/exec'
+    const form = document.forms['syahrul-contac-from']
+
+    const btnKirim = document.querySelector('.btn-kirim');
+    const btnLoading = document.querySelector('.btn-loading');
+    const btnsendMassage = document.querySelector('.btn-send-massage');
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
 
 </body>
 
